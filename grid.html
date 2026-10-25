@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5x4 Grid Layout</title>
+    <style>
+        .grid-container {
+            display: grid;
+
+            grid-template-columns: repeat(5, 1fr); 
+
+            grid-template-rows: repeat(4, 100px); 
+            gap: 15px; 
+            padding: 15px;
+            font-family: sans-serif;
+        }
+        .grid-item {
+            background-color: #3b82f6;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        .featured-item {
+            grid-column: span 2; 
+            background-color: #10b981;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="grid-item">Item 1</div>
+        <div class="grid-item">Item 2</div>
+        <div class="grid-item">Item 3</div>
+        <div class="grid-item">Item 4</div>
+        <div class="grid-item">Item 5</div>
+        
+        <div class="grid-item">Item 6</div>
+        <div class="grid-item">Item 7</div>
+        <div class="grid-item">Item 8</div>
+        <div class="grid-item">Item 9</div>
+        <div class="grid-item">Item 10</div>
+        
+        <div class="grid-item">Item 11</div>
+        <div class="grid-item">Item 12</div>
+        <!-- Example of a child element spanning multiple slots -->
+        <div class="grid-item featured-item">Item 13 (Wide)</div>
+        <div class="grid-item">Item 14</div>
+        
+        <div class="grid-item">Item 15</div>
+        <div class="grid-item">Item 16</div>
+        <div class="grid-item">Item 17</div>
+        <div class="grid-item">Item 18</div>
+        <div class="grid-item">Item 19</div>
+    </div>
+
+</body>
+</html>

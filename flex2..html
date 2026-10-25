@@ -1,0 +1,595 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Flexbox Practice Layouts</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #091735;
+    background: #ffffff;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 1600px;
+    margin: auto;
+}
+
+.panel {
+    grid-column: span 4;
+    padding: 16px;
+    border: 1px solid #d7e3f5;
+    border-radius: 10px;
+    background: #f5f8fc;
+    min-width: 0;
+}
+
+.panel h2 {
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 0 0 16px;
+    font-weight: 750;
+}
+
+.wide {
+    grid-column: span 6;
+}
+
+.half {
+    grid-column: span 4;
+}
+
+.demo {
+    border: 1px solid #182644;
+    border-radius: 5px;
+    padding: 6px;
+    min-height: 112px;
+    display: flex;
+    gap: 16px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 58px;
+    padding: 12px;
+    border: 1px solid;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #07162e;
+    text-align: center;
+}
+
+.red {
+    background: #ff929b;
+    border-color: #ff626d;
+}
+
+.blue {
+    background: #91c3ff;
+    border-color: #4c96ff;
+}
+
+.green {
+    background: #91e5a9;
+    border-color: #55d47b;
+}
+
+.yellow {
+    background: #ffe58a;
+    border-color: #ffc928;
+}
+
+.purple {
+    background: #d5c7ff;
+    border-color: #a48aff;
+}
+
+.teal {
+    background: #a9e3dc;
+    border-color: #62cec1;
+}
+
+.orange {
+    background: #ffd8bc;
+    border-color: #ff9b67;
+}
+
+/* 1. Center Items Horizontally */
+.center-horizontal {
+    align-items: center;
+    justify-content: center;
+}
+
+.center-horizontal .item {
+    width: 121px;
+    height: 68px;
+}
+
+/* 2. Space Between Items */
+.space-between {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.space-between .item {
+    width: 103px;
+    height: 58px;
+}
+
+/* 3. Center Items Vertically and Horizontally */
+.center-both {
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+}
+
+.center-both .item {
+    width: 102px;
+    height: 90px;
+}
+
+/* 4. Flex Direction Column */
+.column {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.column .item {
+    flex: 1;
+    min-height: 49px;
+}
+
+/* 5. Flex Wrap */
+.wrap {
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 12px;
+    border: none;
+    padding: 0;
+}
+
+.wrap .item {
+    flex: 1 1 calc(25% - 12px);
+    height: 92px;
+}
+
+/* 6. Navigation Bar */
+.navbar {
+    grid-column: span 6;
+}
+
+.nav {
+    min-height: 102px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    color: white;
+    background: #001b3b;
+    border: 1px solid #07162e;
+    border-radius: 5px;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* 7. Student Dashboard */
+.dashboard {
+    grid-column: span 6;
+}
+
+.stats {
+    display: flex;
+    gap: 12px;
+}
+
+.stat {
+    flex: 1;
+    min-width: 0;
+    min-height: 134px;
+    padding: 12px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    border-radius: 7px;
+    text-align: center;
+    color: #07162e;
+}
+
+.stat .symbol {
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.stat .label {
+    margin: 7px 0;
+    font-size: 16px;
+}
+
+.stat strong {
+    font-size: 29px;
+}
+
+.stat-blue {
+    background: #d9efff;
+    border-color: #76c4ff;
+}
+
+.stat-green {
+    background: #d4f7df;
+    border-color: #83df9d;
+}
+
+.stat-yellow {
+    background: #fff1be;
+    border-color: #ffce43;
+}
+
+.stat-pink {
+    background: #ffd7e4;
+    border-color: #ff8bb0;
+}
+
+/* 8. Flex Grow */
+.grow-demo {
+    gap: 0;
+    padding: 6px;
+    min-height: 128px;
+}
+
+.grow-demo .item {
+    height: 112px;
+}
+
+.grow-one {
+    flex-grow: 1;
+}
+
+.grow-two {
+    flex-grow: 3;
+}
+
+.grow-three {
+    flex-grow: 1;
+}
+
+/* 9. Flex Order */
+.order-demo {
+    align-items: center;
+    justify-content: space-between;
+    min-height: 124px;
+    gap: 10px;
+}
+
+.order-demo .item {
+    flex: 1;
+    height: 95px;
+}
+
+.order-one { order: 3; }
+.order-two { order: 2; }
+.order-three { order: 4; }
+.order-four { order: 1; }
+
+/* 10. Profile Card */
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 14px 18px;
+    min-height: 160px;
+    border: 1px solid #182644;
+    border-radius: 5px;
+    background: #e9e6ff;
+}
+
+.profile-card img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.profile-info h3 {
+    margin: 0 0 6px;
+    font-size: 22px;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+/* Responsive Layout */
+@media (max-width: 1050px) {
+    .panel,
+    .wide,
+    .half,
+    .navbar,
+    .dashboard {
+        grid-column: span 6;
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .profile-card {
+        gap: 12px;
+    }
+
+    .profile-card img {
+        width: 95px;
+        height: 95px;
+    }
+}
+
+@media (max-width: 650px) {
+    body {
+        padding: 10px;
+    }
+
+    .panel,
+    .wide,
+    .half,
+    .navbar,
+    .dashboard {
+        grid-column: 1 / -1;
+    }
+
+    .panel h2 {
+        font-size: 19px;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .stats {
+        flex-wrap: wrap;
+    }
+
+    .stat {
+        flex: 1 1 calc(50% - 12px);
+    }
+
+    .center-horizontal .item {
+        width: auto;
+        flex: 1;
+    }
+
+    .space-between .item {
+        width: auto;
+        padding: 8px 4px;
+        flex: 1;
+    }
+
+    .center-both {
+        min-height: 190px;
+    }
+
+    .center-both .item {
+        width: auto;
+        flex: 1;
+        padding: 8px 3px;
+    }
+
+    .wrap .item {
+        flex: 1 1 calc(50% - 12px);
+    }
+
+    .profile-card {
+        align-items: center;
+        padding: 12px;
+    }
+
+    .profile-card img {
+        width: 85px;
+        height: 85px;
+    }
+
+    .profile-info h3 {
+        font-size: 18px;
+    }
+
+    .profile-info p {
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+    <!-- 1. Center Items Horizontally -->
+    <section class="panel wide">
+        <h2>1. Center Items Horizontally</h2>
+        <div class="demo center-horizontal">
+            <div class="item red">Item 1</div>
+            <div class="item blue">Item 2</div>
+            <div class="item green">Item 3</div>
+        </div>
+    </section>
+
+    <!-- 2. Space Between Items -->
+    <section class="panel wide">
+        <h2>2. Space Between Items</h2>
+        <div class="demo space-between">
+            <div class="item red">HTML</div>
+            <div class="item blue">CSS</div>
+            <div class="item green">JavaScript</div>
+            <div class="item yellow">React</div>
+        </div>
+    </section>
+
+    <!-- 3. Center Both Directions -->
+    <section class="panel half">
+        <h2>3. Center Items Vertically and Horizontally</h2>
+        <div class="demo center-both">
+            <div class="item red">Box 1</div>
+            <div class="item blue">Box 2</div>
+            <div class="item green">Box 3</div>
+        </div>
+    </section>
+
+    <!-- 4. Flex Direction Column -->
+    <section class="panel half">
+        <h2>4. Flex Direction Column</h2>
+        <div class="demo column">
+            <div class="item purple">Home</div>
+            <div class="item blue">About</div>
+            <div class="item green">Services</div>
+            <div class="item orange">Contact</div>
+        </div>
+    </section>
+
+    <!-- 5. Flex Wrap -->
+    <section class="panel half">
+        <h2>5. Flex Wrap – Product Cards</h2>
+        <div class="demo wrap">
+            <div class="item red">Product 1</div>
+            <div class="item blue">Product 2</div>
+            <div class="item green">Product 3</div>
+            <div class="item yellow">Product 4</div>
+            <div class="item purple">Product 5</div>
+            <div class="item red">Product 6</div>
+            <div class="item teal">Product 7</div>
+            <div class="item orange">Product 8</div>
+        </div>
+    </section>
+
+    <!-- 6. Navigation Bar -->
+    <section class="panel navbar">
+        <h2>6. Navigation Bar</h2>
+        <nav class="nav">
+            <div class="logo">MyWebsite</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#courses">Courses</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </section>
+
+    <!-- 7. Student Dashboard -->
+    <section class="panel dashboard">
+        <h2>7. Student Dashboard</h2>
+        <div class="stats">
+            <div class="stat stat-blue">
+                <div class="symbol">♟</div>
+                <div class="label">Total Students</div>
+                <strong>120</strong>
+            </div>
+
+            <div class="stat stat-green">
+                <div class="symbol">▥</div>
+                <div class="label">Courses</div>
+                <strong>8</strong>
+            </div>
+
+            <div class="stat stat-yellow">
+                <div class="symbol">▤</div>
+                <div class="label">Assignments</div>
+                <strong>24</strong>
+            </div>
+
+            <div class="stat stat-pink">
+                <div class="symbol">▥</div>
+                <div class="label">Attendance</div>
+                <strong>92%</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Flex Grow -->
+    <section class="panel half">
+        <h2>8. Flex Grow</h2>
+        <div class="demo grow-demo">
+            <div class="item red grow-one">Box 1</div>
+            <div class="item blue grow-two">Box 2</div>
+            <div class="item green grow-three">Box 3</div>
+        </div>
+    </section>
+
+    <!-- 9. Flex Order -->
+    <section class="panel half">
+        <h2>9. Flex Order</h2>
+        <div class="demo order-demo">
+            <div class="item red order-one">Box 1</div>
+            <div class="item purple order-two">Box 2</div>
+            <div class="item yellow order-three">Box 3</div>
+            <div class="item blue order-four">Box 4</div>
+        </div>
+    </section>
+
+    <!-- 10. Profile Card -->
+    <section class="panel half">
+        <h2>10. Profile Card</h2>
+        <div class="profile-card">
+            <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop"
+                alt="Ananya Sharma profile">
+            <div class="profile-info">
+                <h3>Ananya Sharma</h3>
+                <p>B.Tech Computer Science</p>
+                <p>Semester 3</p>
+                <p>ananya@example.com</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>
